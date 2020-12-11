@@ -220,7 +220,7 @@ namespace FPSControllerLPFP
             var smoothZ = _velocityZ.Update(velocity.z, movementSmoothness);
             var rigidbodyVelocity = _rigidbody.velocity;
             var force = new Vector3(smoothX - rigidbodyVelocity.x, 0f, smoothZ - rigidbodyVelocity.z);
-            _rigidbody.AddForce(force, ForceMode.VelocityChange);            
+            _rigidbody.AddForce(force, ForceMode.VelocityChange);
         }
 
         private bool CheckCollisionsWithWalls(Vector3 velocity)
