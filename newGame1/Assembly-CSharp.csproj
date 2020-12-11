@@ -65,7 +65,6 @@
      <Compile Include="Assets\Downloaded assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ImpactScript.cs" />
      <Compile Include="Assets\Downloaded assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\FPSController\FpsControllerLPFP.cs" />
      <Compile Include="Assets\Downloaded assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
-     <Compile Include="Assets\Downloaded assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
      <Compile Include="Assets\Downloaded assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
      <Compile Include="Assets\Downloaded assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\Downloaded assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
@@ -170,8 +169,9 @@
      <Compile Include="Assets\Downloaded assets\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
-     <Compile Include="Assets\Scripts\MyFpsController.cs" />
+     <Compile Include="Assets\Scripts\AutomaticGunScriptLPFP.cs" />
      <Compile Include="Assets\Scripts\MyFpsController2.cs" />
+     <Compile Include="Assets\Scripts\MyGun.cs" />
      <Compile Include="Assets\Scripts\PlayerChC.cs" />
      <Compile Include="Assets\Scripts\turretTrigget.cs" />
      <None Include="Assets\Downloaded assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />

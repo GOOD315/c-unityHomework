@@ -6,7 +6,6 @@ public class turretTrigget : MonoBehaviour
 {
     private bool _isTriggered = false;
     private GameObject player;
-    [SerializeField] private GameObject playerTrue;
 
     private void Start()
     {
@@ -30,7 +29,7 @@ public class turretTrigget : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.rotation = Quaternion.LookRotation(playerTrue.transform.position);
+        transform.rotation = Quaternion.LookRotation(player.transform.position);
     }
 
     private void Update()
