@@ -147,6 +147,16 @@ namespace FPSControllerLPFP
             arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Charge();
+            }
+        }
+
+        void Charge()
+        {
+            var direction = new Vector3(input.Move, 0f, input.Strafe).normalized;
+            var worldDirection = transform.TransformDirection(direction);
         }
 
         private void RotateCameraAndCharacter()

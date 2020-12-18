@@ -123,7 +123,6 @@
      <Compile Include="Assets\Downloaded assets\Standard Assets\ParticleSystems\Scripts\ExtinguishableParticleSystem.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\ParticleSystems\Scripts\FireLight.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\ParticleSystems\Scripts\Hose.cs" />
-     <Compile Include="Assets\Downloaded assets\Standard Assets\ParticleSystems\Scripts\ParticleSystemMultiplier.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\ParticleSystems\Scripts\SmokeParticles.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\ParticleSystems\Scripts\WaterHoseParticles.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\Utility\ActivateTrigger.cs" />
@@ -170,9 +169,15 @@
      <Compile Include="Assets\Downloaded assets\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
      <Compile Include="Assets\Downloaded assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
      <Compile Include="Assets\Scripts\AutomaticGunScriptLPFP.cs" />
+     <Compile Include="Assets\Scripts\Bomb.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\GateBtn.cs" />
+     <Compile Include="Assets\Scripts\GateScript.cs" />
      <Compile Include="Assets\Scripts\MyFpsController2.cs" />
      <Compile Include="Assets\Scripts\MyGun.cs" />
-     <Compile Include="Assets\Scripts\PlayerChC.cs" />
+     <Compile Include="Assets\Scripts\ParticleSystemMultiplier.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\abilities.cs" />
      <Compile Include="Assets\Scripts\turretTrigget.cs" />
      <None Include="Assets\Downloaded assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Downloaded assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
