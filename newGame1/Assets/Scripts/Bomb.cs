@@ -35,9 +35,9 @@ public class Bomb : MonoBehaviour
                     rb.AddExplosionForce(power, explPos, radius, lift, ForceMode.Impulse);
                 }
             }
-            ParticleSystemMultiplier explode = GetComponentInChildren<ParticleSystemMultiplier>();
-            explode.enabled = true;
-           // explode.transform.parent=
+            GameObject explode = transform.GetChild(0).gameObject;
+            explode.SetActive(true);
+            // explode.transform.parent=
             Destroy(gameObject, 1f);
             bombTimer = 2f;
         }

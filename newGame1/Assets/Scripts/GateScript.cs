@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GateScript : MonoBehaviour
 {
-    [SerializeField] private bool gateOpen;
+    public bool gateOpen;
     [SerializeField] private float gateSpeed;
     private Vector3 openPos;
     private Vector3 closePos;
@@ -22,7 +22,29 @@ public class GateScript : MonoBehaviour
     {
         if (gateOpen)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + gateSpeed, transform.position.z);
+            openGate();
+        }
+        else
+        {
+            closeGate();
+        }
+    }
+
+    public void openGate()
+    {
+        if (transform.position.y < 10)
+        {
+            print("openGate");
+            transform.position = new Vector3(transform.position.x, transform.position.y + (gateSpeed * Time.deltaTime), transform.position.z);
+        }
+    }
+
+    void closeGate()
+    {
+        if (transform.position.y >= 10)
+        {
+            print("closeGate");
+            transform.position = new Vector3(transform.position.x, transform.position.y - (gateSpeed * Time.deltaTime), transform.position.z);
         }
     }
 }
