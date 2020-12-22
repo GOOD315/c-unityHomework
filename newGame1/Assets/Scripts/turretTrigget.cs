@@ -23,21 +23,23 @@ public class turretTrigget : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            // _isTriggered = false;
+            _isTriggered = false;
         }
     }
 
     private void FixedUpdate()
     {
-        transform.rotation = Quaternion.LookRotation(player.transform.position);
+
     }
 
     private void Update()
     {
-        /*  if (_isTriggered)
-          {
-              transform.rotation = Quaternion.LookRotation(player.transform.position);
-          }*/
+        if (_isTriggered)
+        {
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            direction.y = 0;
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
     }
 
 }
