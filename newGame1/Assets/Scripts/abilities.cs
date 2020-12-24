@@ -15,15 +15,17 @@ public class abilities : MonoBehaviour
 
     // BUTTONS
     private bool buttonReady;
-    [SerializeField] private float buttonDistance;
+    private float buttonDistance;
     private RaycastHit btnHit;
     private Ray btnRay;
 
     // INTERFACE
+    [Header("Buttons")]
     public Text buttonText;
 
     // GATE
     [SerializeField] private GameObject gate;
+    GateScript gateScript;
 
 
     // Start is called before the first frame update
@@ -32,33 +34,34 @@ public class abilities : MonoBehaviour
         bombForce = 30;
         mCam = Camera.main.transform;
         buttonText.enabled = false;
+        this.buttonDistance = 4f;
     }
 
     void FixedUpdate()
     {
-        CheckButtonRange();
 
-
-        if (Input.GetKeyDown(KeyCode.E) && buttonReady)
-        {
-            GateScript gateScript;
-            if (btnHit.transform.name == "GateButton")
-            {
-                gateScript = gate.GetComponent<GateScript>();
-                gateScript.gateOpen = !gateScript.gateOpen;
-            }
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckButtonRange();
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             Vector3 pos = new Vector3(mCam.position.x, mCam.position.y + 0.5f, mCam.position.z);
             GameObject temp = Instantiate(bomb, pos + mCam.forward, Quaternion.identity);
             Rigidbody rb = temp.GetComponent<Rigidbody>();
             rb.AddForce(mCam.forward * bombForce, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && buttonReady)
+        {
+            if (btnHit.transform.name == "GateButton")
+            {
+                gateScript = gate.GetComponent<GateScript>();
+                gateScript.gateOpen = !gateScript.gateOpen;
+            }
         }
 
     }
@@ -79,7 +82,7 @@ public class abilities : MonoBehaviour
                 buttonText.enabled = false;
             }
         }
-        else { buttonText.enabled = false; }
+        else { buttonText.enabled = false; buttonReady = false; }
     }
 
 }

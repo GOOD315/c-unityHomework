@@ -32,18 +32,16 @@ public class GateScript : MonoBehaviour
 
     public void openGate()
     {
-        if (transform.position.y < 10)
+        if (transform.position.y < openPos.y)
         {
-            print("openGate");
             transform.position = new Vector3(transform.position.x, transform.position.y + (gateSpeed * Time.deltaTime), transform.position.z);
         }
     }
 
     void closeGate()
     {
-        if (transform.position.y >= 10)
+        if (transform.position.y >= closePos.y)
         {
-            print("closeGate");
             transform.position = new Vector3(transform.position.x, transform.position.y - (gateSpeed * Time.deltaTime), transform.position.z);
         }
     }
