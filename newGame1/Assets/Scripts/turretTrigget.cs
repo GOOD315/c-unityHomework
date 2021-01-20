@@ -5,11 +5,12 @@ using UnityEngine;
 public class turretTrigget : MonoBehaviour
 {
     private bool _isTriggered = false;
-    private GameObject player;
+    private Transform player;
+    [SerializeField] private float rotationSpeed;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -31,14 +32,14 @@ public class turretTrigget : MonoBehaviour
     {
 
     }
-
+     
     private void Update()
     {
         if (_isTriggered)
         {
-            Vector3 direction = (player.transform.position - transform.position).normalized;
-            direction.y = 0;
-            transform.rotation = Quaternion.LookRotation(direction);
+            Vector3 direction = (player.position - transform.position).normalized;
+            Quaternion lookRotationGO = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotationGO, Time.deltaTime * rotationSpeed);
         }
     }
 

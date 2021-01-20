@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _health;
     [SerializeField] private NavMeshAgent agent;
 
+    [SerializeField] private Spawner enemySpawner;
+
     private Transform playerPos;
     private float stopDistance = 3;
     private float attackDistance = 8;
@@ -23,6 +25,8 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stopDistance;
         playerPos = FindObjectOfType<MyFpsController2>().transform;
+
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<Spawner>();
     }
 
     // Start is called before the first frame update
@@ -38,6 +42,7 @@ public class Enemy : MonoBehaviour
         if (Health <= 0)
         {
             Health = 0;
+            enemySpawner.enemyCounter -= 1;
             Destroy(gameObject);
         }
     }

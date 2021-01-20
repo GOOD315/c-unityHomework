@@ -21,8 +21,12 @@ public class BulletScript : MonoBehaviour
     [Header("Bullets")]
     public int BulletDmg;
 
+    private GameObject playerCanvas;
+    private MyAdvancedGUI myGUI;
+
     private void Start()
     {
+        myGUI = GameObject.Find("Player Canvas").GetComponent<MyAdvancedGUI>();
         //Start destroy timer
         StartCoroutine(DestroyAfter());
     }
@@ -79,6 +83,10 @@ public class BulletScript : MonoBehaviour
             var enemyScr = collision.gameObject.GetComponent<Enemy>();
             enemyScr.Damage(BulletDmg);
             Destroy(gameObject);
+        }
+        else
+        {
+            myGUI.currentHitObject = collision.gameObject;
         }
     }
 
