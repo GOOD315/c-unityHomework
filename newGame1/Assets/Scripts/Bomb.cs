@@ -9,21 +9,26 @@ public class Bomb : MonoBehaviour
     private float radius;
     private float power;
     private float lift;
+    [SerializeField] private int damage;
+    private bool isExploding;
 
     // Start is called before the first frame update
     void Start()
     {
         bombTimer = 2f;
         radius = 15f;
-        lift = 2f;
+        lift = 10f;
         power = 50f;
+
+        isExploding = false;
     }
 
     void FixedUpdate()
     {
         bombTimer -= Time.deltaTime;
-        if (bombTimer <= 0)
+        if (bombTimer <= 0 && !isExploding)
         {
+            isExploding = true;
             print("VZRRIV AAA");
             Vector3 explPos = transform.position;
             Collider[] colls = Physics.OverlapSphere(explPos, radius);
@@ -34,12 +39,18 @@ public class Bomb : MonoBehaviour
                     Rigidbody rb = col.GetComponent<Rigidbody>();
                     rb.AddExplosionForce(power, explPos, radius, lift, ForceMode.Impulse);
                 }
+                if (col.GetComponent<Enemy>())
+                {
+                    var enemyScr = col.GetComponent<Enemy>();
+                    print(enemyScr.Health);
+                    enemyScr.Damage(damage);
+                    print(enemyScr.Health);
+                }
             }
             GameObject explode = transform.GetChild(0).gameObject;
             explode.SetActive(true);
             // explode.transform.parent=
-            Destroy(gameObject, 1f);
-            bombTimer = 2f;
+            Destroy(gameObject, 3f);
         }
     }
 

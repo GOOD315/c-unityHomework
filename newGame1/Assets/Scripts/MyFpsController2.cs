@@ -76,8 +76,7 @@ namespace MyFpsController
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();
-
-            Cursor.lockState = CursorLockMode.Locked;
+           
         }
 
         private Transform AssignCharactersCamera()

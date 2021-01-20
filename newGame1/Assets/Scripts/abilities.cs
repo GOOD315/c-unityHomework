@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyFpsController;
+using UnityEngine.SceneManagement;
 
 public class abilities : MonoBehaviour
 {
@@ -10,11 +12,8 @@ public class abilities : MonoBehaviour
     private Transform mCam;
     private int bombForce;
 
-    // CHARGE
-    private float chargeSpeed;
-
     // BUTTONS
-    private bool buttonReady;
+    public bool buttonReady;
     private float buttonDistance;
     private RaycastHit btnHit;
     private Ray btnRay;
@@ -27,14 +26,25 @@ public class abilities : MonoBehaviour
     [SerializeField] private GameObject gate;
     GateScript gateScript;
 
+    // MOVEMENT
+    private float dashSpeed;
+    Rigidbody _rigidbody;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        // BOMB
         bombForce = 30;
         mCam = Camera.main.transform;
+
+        // BUTTONS
         buttonText.enabled = false;
         this.buttonDistance = 4f;
+
+        // MOVEMENT
+        _rigidbody = GetComponent<Rigidbody>();
+        dashSpeed = 1000f;
     }
 
     void FixedUpdate()
@@ -47,6 +57,7 @@ public class abilities : MonoBehaviour
     {
         CheckButtonRange();
 
+        // BOMB
         if (Input.GetKeyDown(KeyCode.C))
         {
             Vector3 pos = new Vector3(mCam.position.x, mCam.position.y + 0.5f, mCam.position.z);
@@ -55,6 +66,7 @@ public class abilities : MonoBehaviour
             rb.AddForce(mCam.forward * bombForce, ForceMode.Impulse);
         }
 
+        // GATE
         if (Input.GetKeyDown(KeyCode.E) && buttonReady)
         {
             if (btnHit.transform.name == "GateButton")
@@ -64,6 +76,16 @@ public class abilities : MonoBehaviour
             }
         }
 
+        // DASH
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Dash();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+        }
     }
 
     void CheckButtonRange()
@@ -74,15 +96,31 @@ public class abilities : MonoBehaviour
             if (btnHit.transform.name == "GateButton")
             {
                 buttonReady = true;
-                buttonText.enabled = true;
+                // buttonText.enabled = true;
             }
             else
             {
                 buttonReady = false;
-                buttonText.enabled = false;
+                // buttonText.enabled = false;
             }
         }
-        else { buttonText.enabled = false; buttonReady = false; }
+        else
+        {
+            // buttonText.enabled = false;
+            buttonReady = false;
+        }
+    }
+
+    void Dash()
+    {
+        var direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+        var worldDirection = transform.TransformDirection(direction);
+        var dashVelocity = worldDirection * dashSpeed;
+        var rigidbodyVelocity = _rigidbody.velocity;
+
+        var dashForce = new Vector3(dashVelocity.x + rigidbodyVelocity.x, 0f, dashVelocity.z + rigidbodyVelocity.z);
+        _rigidbody.AddForce(dashForce, ForceMode.Impulse);
+        print("DSAH");
     }
 
 }

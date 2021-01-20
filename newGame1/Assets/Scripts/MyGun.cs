@@ -12,8 +12,8 @@ public class MyGun : MonoBehaviour
     private float shootingDistance;
 
     // AMMO
-    [SerializeField] private int maxAmmo = 30;
-    private int currentAmmo;
+    [SerializeField] public int maxAmmo = 30;
+    public int currentAmmo;
     private bool outOfAmmo;
     private bool isReloading;
 
@@ -35,7 +35,7 @@ public class MyGun : MonoBehaviour
     public Text currentWeaponText;
     public Text currentAmmoText;
     public Text totalAmmoText;
-    private string weaponName = "АК-74";
+    public string weaponName = "АК-74";
 
 
     void Awake()
@@ -50,15 +50,15 @@ public class MyGun : MonoBehaviour
     void Start()
     {
         //Get weapon name from string to text
-        currentWeaponText.text = weaponName;
+        // currentWeaponText.text = weaponName;
         //Set total ammo text from total ammo int
-        totalAmmoText.text = maxAmmo.ToString();
+        // totalAmmoText.text = maxAmmo.ToString();
     }
 
     void Update()
     {
         //Set current ammo text from ammo int
-        currentAmmoText.text = currentAmmo.ToString();
+        // currentAmmoText.text = currentAmmo.ToString();
 
         if (currentAmmo <= 0)
         {
@@ -66,7 +66,7 @@ public class MyGun : MonoBehaviour
         }
 
         // automatic fire
-        if (Input.GetMouseButton(0) && !outOfAmmo)
+        if (Input.GetMouseButton(0) && !outOfAmmo && !isReloading)
         {
             //Shoot automatic
             if (Time.time - lastFired1 > 1 / fireRate)
@@ -86,16 +86,19 @@ public class MyGun : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
-            print("RELOAD");
-            // Reload();
+            isReloading = true;
+            StartCoroutine(Reload());
         }
 
     }
 
-    void Reload()
+    IEnumerator Reload()
     {
-
+        yield return new WaitForSeconds(3);
+        isReloading = false;
+        currentAmmo = maxAmmo;
+        outOfAmmo = false;
     }
 }
