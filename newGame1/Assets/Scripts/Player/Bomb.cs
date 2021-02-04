@@ -12,6 +12,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private int damage;
     private bool isExploding;
 
+
     // Start is called before the first frame update
     void Start()
     {
