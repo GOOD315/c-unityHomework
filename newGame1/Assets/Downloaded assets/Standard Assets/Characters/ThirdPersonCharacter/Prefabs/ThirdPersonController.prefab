@@ -764,6 +764,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -775,6 +776,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1471,6 +1473,7 @@ GameObject:
   - component: {fileID: 13615390}
   - component: {fileID: 11444856}
   - component: {fileID: 11469404}
+  - component: {fileID: 1130997265353334222}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: Untagged
@@ -1576,6 +1579,30 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+--- !u!114 &1130997265353334222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5a979683cc90840aaec2980b281d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorGO: {fileID: 0}
+  handObj: {fileID: 0}
+  lookObj: {fileID: 0}
+  rightFoot: {fileID: 0}
+  leftFoot: {fileID: 0}
+  weightRightFoot: 0
+  weightLeftFoot: 0
+  ikActive: 0
+  rayLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  weightRightHand: 1
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,6 +1709,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1693,6 +1721,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
